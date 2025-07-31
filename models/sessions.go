@@ -2,6 +2,7 @@ package models
 
 import (
 	"crypto/sha1"
+	"crypto/sha256"
 	"database/sql"
 	"encoding/hex"
 )
