@@ -9,7 +9,7 @@ type AppConfiguration struct {
 	SpotifyConfig struct {
 		ClientID     string `json:"clientId"`
 		ClientSecret string `json:"clientSecret"`
-		RedirectURI  string `json:"redirectURI"`
+		RedirectURI  string `json:"redirectUri"`
 	} `json:"spotify"`
 }
 
