@@ -68,7 +68,7 @@ func ParseFS(fs fs.FS, logger *slog.Logger, fileNames ...string) (*Template, err
 }
 
 func errMessages(errs ...error) []string {
-	errMessages := make([]string, len(errs))
+	errMessages := make([]string, 0, len(errs))
 	for _, err := range errs {
 		errMessages = append(errMessages, err.Error())
 	}
