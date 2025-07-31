@@ -51,7 +51,7 @@ func (sc *SpotifyController) GetToken(w http.ResponseWriter, r *http.Request) {
 	tokenRequest.Add("grant_type", "authorization_code")
 	tokenRequest.Add("redirect_uri", sc.SpotifyService.Configuration.SpotifyConfig.RedirectURI)
 	basicPlain := fmt.Sprintf("%s:%s", sc.SpotifyService.Configuration.SpotifyConfig.ClientID, sc.SpotifyService.Configuration.SpotifyConfig.ClientSecret)
-	basicBase64 := base64.URLEncoding.EncodeToString([]byte(basicPlain))
+	basicBase64 := base64.StdEncoding.EncodeToString([]byte(basicPlain))
 	req, err := http.NewRequest("POST", "https://accounts.spotify.com/api/token", strings.NewReader(tokenRequest.Encode()))
 	if err != nil {
 		sc.Logger.Error("Failed to parse Spotify token URL", slog.String("error", err.Error()))
