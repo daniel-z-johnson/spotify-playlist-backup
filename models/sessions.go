@@ -11,7 +11,7 @@ type Sessions struct {
 }
 
 func (s *Sessions) WriteValue(session string, key string, value string) error {
-	hashSessionBytes := sha1.Sum([]byte(session))
+	hashSessionBytes := sha256.Sum256([]byte(session))
 	hashHex := hex.EncodeToString(hashSessionBytes[:])
 	_, err := s.Db.Exec("INSERT INTO sessions (sessions_hash, key, value) VALUES (?, ?, ?)", hashHex, key, value)
 	if err != nil {
