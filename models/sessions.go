@@ -1,7 +1,6 @@
 package models
 
 import (
-	"crypto/sha1"
 	"crypto/sha256"
 	"database/sql"
 	"encoding/hex"
@@ -22,7 +21,7 @@ func (s *Sessions) WriteValue(session string, key string, value string) error {
 }
 
 func (s *Sessions) ReadValue(session string, key string) (string, error) {
-	hashSessionBytes := sha1.Sum([]byte(session))
+	hashSessionBytes := sha256.Sum256([]byte(session))
 	hashHex := hex.EncodeToString(hashSessionBytes[:])
 	var value string
 	err := s.Db.QueryRow("SELECT value FROM sessions WHERE sessions_hash = ? AND key = ?", hashHex, key).Scan(&value)
