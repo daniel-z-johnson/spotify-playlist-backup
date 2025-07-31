@@ -7,7 +7,7 @@ import (
 
 type AppConfiguration struct {
 	SpotifyConfig struct {
-		ClientID     string `json:"clientID"`
+		ClientID     string `json:"clientId"`
 		ClientSecret string `json:"clientSecret"`
 		RedirectURI  string `json:"redirectURI"`
 	} `json:"spotify"`
