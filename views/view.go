@@ -57,6 +57,9 @@ func ParseFS(log *slog.Logger, fsys fs.FS, patterns ...string) (*Template, error
 	if log == nil {
 		return nil, errors.New("views: logger is required")
 	}
+	if fsys == nil {
+		return nil, errors.New("views: filesystem is required")
+	}
 	tpl := template.New(patterns[0])
 	tpl = tpl.Funcs(
 		template.FuncMap{
