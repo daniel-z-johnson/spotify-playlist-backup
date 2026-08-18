@@ -1,0 +1,6 @@
+[spotify]
+client_id = ""
+client_secret = ""
+redirect_url = ""
+auth_url = ""
+resource_url = ""
