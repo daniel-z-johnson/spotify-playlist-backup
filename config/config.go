@@ -10,7 +10,9 @@ import (
 
 // Config contains all application configuration.
 type Config struct {
-	Spotify SpotifyConfig `toml:"spotify"`
+	Spotify  SpotifyConfig  `toml:"spotify"`
+	Address  string         `toml:"address"`
+	Database DatabaseConfig `toml:"database"`
 }
 
 // SpotifyConfig contains the settings used to access Spotify.
@@ -20,6 +22,10 @@ type SpotifyConfig struct {
 	RedirectURL  string `toml:"redirect_url"`
 	AuthURL      string `toml:"auth_url"`
 	ResourceURL  string `toml:"resource_url"`
+}
+
+type DatabaseConfig struct {
+	Location string `toml:"location"`
 }
 
 // Load reads and parses a TOML configuration file at path.

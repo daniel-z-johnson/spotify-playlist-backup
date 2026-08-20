@@ -17,6 +17,8 @@ client_secret = "client-secret"
 redirect_url = "http://127.0.0.1:8080/callback"
 auth_url = "https://accounts.spotify.com"
 resource_url = "https://api.spotify.com"
+[database]
+location = "test.db"
 `
 	if err := os.WriteFile(path, []byte(contents), 0o600); err != nil {
 		t.Fatalf("write test config: %v", err)
@@ -36,6 +38,10 @@ resource_url = "https://api.spotify.com"
 	}
 	if cfg.Spotify != want {
 		t.Errorf("Load().Spotify = %#v, want %#v", cfg.Spotify, want)
+	}
+	expectedDBLocation := "test.db"
+	if cfg.Database.Location != expectedDBLocation {
+		t.Errorf("Load().Database.Location = %q, want %q", cfg.Database.Location, expectedDBLocation)
 	}
 }
 
